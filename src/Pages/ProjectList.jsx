@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "../Components/Features/SearchBar"; 
 import StatusBadge from "../Components/Features/StatusBadge";
 import TopBar from "../Components/UI/TopBar"; 
+import AddProjectModal from "../Components/Features/Projects/AddProjectModal";
 
 function ProjectList () {
     const [projects] = useState([
@@ -13,12 +14,17 @@ function ProjectList () {
     ]);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
     // 2. The Logic (Filter based on search)
     const filteredProjects = projects.filter(project => 
         project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.client.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleModalOpen = () => {
+        setIsModalOpen(true);
+    }
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
@@ -27,7 +33,7 @@ function ProjectList () {
             {/* B. The Search Component */}
             <SearchBar 
                 onSearch={(value) => setSearchTerm(value)} 
-                onAddClick={() => alert("Open Modal Here")} 
+                onAddClick={handleModalOpen}
             />
 
             {/* C. The List (Iterating over filtered data) */}
@@ -71,6 +77,11 @@ function ProjectList () {
                 </div>
                 )}
             </div>
+            <AddProjectModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} // <--- CLOSES MODAL
+                onAdd={handleModalOpen}
+            />
         </div>
     );
 }
