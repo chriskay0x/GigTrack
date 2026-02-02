@@ -74,7 +74,7 @@ function AddProjectModal ({ isOpen, onClose, onAdd }) {
                         name="status" 
                         value={form.status} 
                         onChange={handleChange}
-                        className="glass-input w-full border-slate-600/50 border text-slate-200 focus:border-sky-500 focus:ring-sky-500 py-1 px-2"
+                        className="glass-input w-full border-slate-600/50 border text-slate-500 focus:border-sky-500 focus:ring-sky-500 py-1 px-2"
                     >
                         {["Active", "Pending", "Paid"].map(s => (
                         <option key={s} value={s} className="bg-navy-900 ">{s}</option>
