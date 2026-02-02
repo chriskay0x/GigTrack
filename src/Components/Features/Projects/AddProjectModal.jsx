@@ -32,7 +32,6 @@ function AddProjectModal ({ isOpen, onClose, onAdd }) {
                 <ModalInput 
                     label="Project Name" 
                     name="name" 
-                    placeholder="e.g. Website Redesign" 
                     value={form.name} 
                     onChange={handleChange} 
                     required 
@@ -41,7 +40,6 @@ function AddProjectModal ({ isOpen, onClose, onAdd }) {
                 <ModalInput 
                     label="Client" 
                     name="client" 
-                    placeholder="e.g. Alpha Corp" 
                     value={form.client} 
                     onChange={handleChange} 
                     required 
@@ -71,25 +69,22 @@ function AddProjectModal ({ isOpen, onClose, onAdd }) {
 
                 {/* Status Dropdown (Still manual because it's unique) */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-400 mb-1">Status</label>
+                    <label className="block text-sm font-medium text-slate-200 mb-1">Status</label>
                     <select 
                         name="status" 
                         value={form.status} 
                         onChange={handleChange}
-                        className="glass-input w-full"
+                        className="glass-input w-full border-slate-600/50 border text-slate-200 focus:border-sky-500 focus:ring-sky-500 py-1 px-2"
                     >
                         {["Active", "Pending", "Paid"].map(s => (
-                        <option key={s} value={s} className="bg-navy-900">{s}</option>
+                        <option key={s} value={s} className="bg-navy-900 ">{s}</option>
                         ))}
                     </select>
                 </div>
 
                 {/* Actions */}
                 <div className="flex justify-end gap-3 pt-4">
-                    <button type="button" onClick={onClose} className="text-slate-400 hover:text-white text-sm font-medium">
-                        Cancel
-                    </button>
-                    <button type="submit" className="btn-primary">
+                    <button type="submit" className="btn-primary cursor-pointer bg-sky-600 hover:bg-sky-500 text-white px-6 py-2.5 rounded-lg font-medium transition-all flex items-center justify-center gap-2 active:scale-95">
                         Create Project
                     </button>
                 </div>
