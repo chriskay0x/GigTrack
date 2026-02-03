@@ -4,7 +4,7 @@ import ModalInput from "../ModalComponents/ModalInput";
 import ModalHeader from "../ModalComponents/ModalHeader";
 import ModalOverlay from "../ModalComponents/ModalOverlay";
 
-function AddProjectModal ({ isOpen, onClose, onAdd }) {
+function AddProjectModal ({ isOpen, onClose, projects, setProjects }) {
     const [form, setForm] = useState({
         name: "", client: "", deadline: "", budget: "", status: "Active"
     });
@@ -16,9 +16,16 @@ function AddProjectModal ({ isOpen, onClose, onAdd }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAdd({ ...form, id: Date.now() });
-        onClose();
+        
+        const newProject = {
+            id: Date.now(),
+            ...form
+        }
+
+        setProjects([...projects, newProject]);
+
         setForm({ name: "", client: "", deadline: "", budget: "", status: "Active" });
+        onClose();
     };
 
     return (
