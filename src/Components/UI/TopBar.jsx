@@ -1,6 +1,13 @@
 import { Bell } from "lucide-react";
+import { Link } from "react-router-dom";
+import Christian from "../../assets/Christian.jpg"
 
 const TopBar = ({ title }) => {
+  const currentUser = {
+    id: "user_1",
+    name: "Christian"
+  }
+
   return (
     <div className="flex justify-between items-center mb-8">
       {/* 1. Dynamic Page Title */}
@@ -14,20 +21,22 @@ const TopBar = ({ title }) => {
           <span className="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full border border-slate-900"></span>
         </button>
         
-        {/* Profile Dropdown Trigger */}
-        <div className="flex items-center gap-3 cursor-pointer hover:bg-slate-800/50 p-1.5 pr-3 rounded-full transition-colors border border-transparent hover:border-slate-700">
-          <div className="w-8 h-8 rounded-full bg-linear-to-tr from-sky-500 to-indigo-500 p-px`">
-             <img 
-               src="https://i.pravatar.cc/150?u=1" 
-               alt="Profile" 
-               className="w-full h-full rounded-full object-cover border-2 border-slate-900" 
-             />
+
+        <Link to={`/profile/${currentUser.id}`}>
+          <div className="flex items-center gap-3 cursor-pointer hover:bg-slate-800/50 p-1.5 pr-3 rounded-full transition-colors border border-transparent hover:border-slate-700">
+            <div className="w-8 h-8 rounded-full bg-linear-to-tr from-sky-500 to-indigo-500 p-px`">
+              <img 
+                src={Christian} 
+                alt="Chris Pic" 
+                className="w-full h-full rounded-full object-cover border-2 border-slate-900" 
+              />
+            </div>
+            {/* Hide name on mobile, show on desktop */}
+            <span className="hidden md:block text-sm font-medium text-slate-200">
+              {currentUser.name}
+            </span>
           </div>
-          {/* Hide name on mobile, show on desktop */}
-          <span className="hidden md:block text-sm font-medium text-slate-200">
-            John Doe
-          </span>
-        </div>
+        </Link>
       </div>
     </div>
   );
