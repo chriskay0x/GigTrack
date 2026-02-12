@@ -11,6 +11,10 @@ function Sidebar () {
         { name: "Settings", path: "/settings", icon: Settings },
     ];
 
+    function handleClick () {
+        console.log("Im logged out..");
+    }
+
     return (
         <aside className="w-64 h-screen bg-slate-900 border-r border-slate-800 flex flex-col 
         fixed left-0 top-0 z-50">
@@ -43,19 +47,19 @@ function Sidebar () {
             {/* 3. PROFILE ZONE */}
             <div className="p-4 border-t border-slate-800">
                 <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer group">
-                <div className="w-10 h-10 rounded-full bg-linear-to-tr from-sky-500 to-emerald-500 flex items-center justify-center text-white font-bold text-sm">
-                    JD
-                </div>
-                <div className="flex-1">
-                    <p className="text-sm font-medium text-white group-hover:text-sky-400 transition-colors">
-                    John Doe
-                    </p>
-                    <p className="text-xs text-slate-500">Freelancer</p>
-                </div>
-                <LogOut size={18} className="text-slate-500 hover:text-white" />
+                    <div className="w-10 h-10 rounded-full bg-linear-to-tr from-sky-500 to-emerald-500 flex items-center justify-center text-white font-bold text-sm">
+                        JD
+                    </div>
+                    <div className="flex-1">
+                        <p className="text-sm font-medium text-white group-hover:text-sky-400 transition-colors">
+                        John Doe
+                        </p>
+                        <p className="text-xs text-slate-500">Freelancer</p>
+                    </div>
+                    <LogOut size={18} className="text-slate-500 hover:text-white" onClick={handleClick} />
                 </div>
             </div>
-            </aside>
+        </aside>
     )
 }
 
